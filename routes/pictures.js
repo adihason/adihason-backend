@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
         const pic = new Picture({
             file: `http://localhost:5001/public/images/${picFile.name}`,
             description,
-            hashtags: req.body.hashtags.split('#')
+            hashtags: req.body.hashtags.split('#').slice(1)
         });
         pic.save((err, pic) => {
             if (err) {
