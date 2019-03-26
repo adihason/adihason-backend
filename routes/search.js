@@ -5,8 +5,9 @@ const Picture = require('../database/models/imageModel');
 
 router.use(bodyParser.json());
 
-router.post('/:hashtags', (req, res) => {
-    Picture.find({ hashtags: { $in: req.params.hashtags.split['#'] } }, (err, pics) => {
+
+router.get('/:hashtags', (req, res) => {
+    Picture.find({ hashtags: req.params.hashtags }, (err, pics) => {
         if (err) {
             return console.log(err);
         }
